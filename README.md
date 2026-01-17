@@ -1,9 +1,6 @@
 # 🛒 Django E-Commerce Platform
 
 <div align="center">
-  <img src="Image_of_Prince_ismail_adedapo.jpeg" alt="Prince Ismail Adedapo" width="200" style="border-radius: 50%;" />
-  <br />
-  <h3><b>Author: Prince Ismail Adedapo</b></h3>
   <p>Software Developer | Python & Django Specialist</p>
 </div>
 
