@@ -1,4 +1,4 @@
-[Project Screenshot](Screenshot%2026-01-17%072449.png)
+![Screenshot](./Screenshot%202026-01-17%20072449.png)
 
 # 🛒 Django E-Commerce Platform
 
