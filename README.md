@@ -1,5 +1,5 @@
 # 🛒 Django E-Commerce Platform
-
+[Project Screenshot](Screenshot%2026-01-17%072449.png)
 <div align="center">
   <img src="Image_of_Prince_ismail_adedapo.jpeg" alt="Prince Ismail Adedapo" width="200" style="border-radius: 50%;" />
   <br />
