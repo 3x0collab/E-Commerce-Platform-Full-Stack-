@@ -1,0 +1,559 @@
+{% extends 'shop/layout.html' %}
+{% load static %}
+{% block content %}
+<div id="blank-overlay"></div>
+    <div id="loading-overlay">
+        <div class="record-signal"></div>
+    </div>
+    <!-- Start Slider -->
+    <style>
+.explore-link {
+  background-color: orange; /* Background color (you can change this to your desired color) */
+  padding: 10px 20px; /* Add padding to the link */
+  border-radius: 20px; /* Add border radius to give rounded corners */
+  color: #ffffff; /* Text color */
+  font-size: 15px!important;
+  text-align: center;
+  display: inline-block; /* Make the link inline block to adjust width */
+  width: 250px; /* Set a specific width for the link (you can change this to your desired width) */
+}
+
+.explore-link:hover {
+  background-color: transparent; /* Make the background transparent on hover */
+  border: 2px solid #ffffff; /* Add a white border on hover */
+}
+
+</style>
+
+    <!-- Start Slider -->
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-start">
+                <img  src="{% static 'shop/images/young-black-race-man-with-blueprint-stading-near-glass-building.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-md-12">
+                            <h1  style="font-size: 30px;" class="m-b-20"><strong>Experience High Quality Building Materials<br> 
+                             For Your Construction Projects That Exceeds <br>
+                             Industry Standards And Saves Cost</strong>
+                            <br>
+                           </h1>
+                            <p class="m-b-40">Africa's leading Building Materials company. </p>
+                            <p><a href="#" class="explore-link" >Get Started</a></p>
+                        </div> -->
+                        <div class="col-md-12 bay">
+                            <h1 style="font-size: 30px;" class="m-b-20"><strong>Experience High Quality Building Materials<br> 
+                                For Your Construction Projects That Exceeds <br>
+                                Industry Standards And Saves Cost</strong>
+                            <br>
+                            </h1>
+                            <p class="m-b-40">Africa's leading Building Materials company. </p>
+                            <p><a href="#" class="explore-link">Get Started</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-start">
+                <img src="{% static 'shop/images/building-new-concrete-houses.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 bay">
+                            <h1 style="font-size: 30px;" class="m-b-20"><strong>Secured Trading Service<br></strong>
+                            <p class="m-b-40">Fully committed to provide reliable, qualitative,<br>
+                             distinctive and time-tested building materials</p>
+                            <p><a href="#" class="explore-link">Learn more</a></p>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-start">
+                <img src="{% static 'shop/images/handyman-prepare-cement-use-construction (1).jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 bay">
+                            <h1 style="font-size: 30px;" class="m-b-20"><strong>BUILDING MATERIALS<br></strong>
+                            </h1>
+                            <p class="m-b-40">We constantly strive to anticipate the evolving <br>
+                             requirements of construction projects and to develop new materials to meet those demands.</p>
+                            <p><a href="#" class="explore-link">Discover more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="circle-animation"></div>
+            <div class="circle-animation1"></div>
+    </div>
+    <!-- End Categories -->
+	<style>
+    section {
+        font-family: Arial, sans-serif;
+        background-color: rgb(255, 255, 255);
+        padding: 50px;
+    }
+
+    .container2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .content {
+        flex: 1;
+        padding-right: 50px;
+    }
+
+    .content h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        position: relative;
+    }
+
+    .image1 {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .animationImage {
+        width: 500px;
+        height: 250px;
+        position: absolute;
+        top: 50%;
+        left: -40%;
+        border-radius: 100px;
+        transform: translate(-50%, -100%);
+        animation: moveUpDown 2s ease-in-out infinite;
+    }
+
+    @keyframes moveUpDown {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+    }
+
+    .big-number {
+        font-size: 80px; /* You can adjust the font size as needed */
+        font-weight: bold; /* You can adjust the font weight as needed */
+        color: orange;
+    }
+
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px; /* Adjust the spacing between the number and the paragraphs */
+    }
+
+    .text-content p {
+        margin: 0; /* Remove default margin for paragraphs */
+    }
+
+    /* Media query for phone versions */
+    @media screen and (max-width: 767px) {
+        .container2 {
+            flex-direction: column;
+        }
+
+        .content {
+            padding-right: 0;
+        }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .animationImage {
+            position: static;
+            transform: none;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .big-number {
+            font-size: 60px;
+        }
+    }
+</style>
+<style>
+    .container4 {
+        display: flex;
+    }
+
+    .text7 {
+        flex: 1;
+        padding: 40px;
+    }
+
+    /* Optional: To limit the image size, you can add a max-width */
+    .image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Media query for phone version */
+    @media screen and (max-width: 767px) {
+        .container4 {
+            flex-direction: column;
+        }
+        .text7 {
+            padding: 20px;
+        }
+    }
+</style>
+
+<section1>
+    <div class="container4">
+       
+        <div class="text7 ">
+            <p style="font-weight: bold; color: black; font-family: Times New Roman; font-size: 28px;" >
+                Welcome to F and f global ventures Limited
+            </p>
+            <div class="row" style="margin-top: -80px!important; margin-left: 5px;">
+                        <div class="big-number">_</div>
+                    </div>
+
+            <p style="color: black; font-family: Times New Roman;" >
+               This Will Save You From Construction Hazards That Comes From The Use Of Substandard And Untested Products
+            </p>
+            <p style="color: black; font-family: Times New Roman;" >
+               <span style="color: orange; font-weight: bold;">☞</span> Learn To Get Value For Your Money When Purchasing Building Materials
+            </p>
+            <p style="color: black; font-family: Times New Roman;" >
+               <span style="color: orange; font-weight: bold;">☞</span> Perfect For Newbies In Search Of Trusted Hands To Handle Construction Materials For Their Projects
+            </p>
+            <p style="color: black; font-family: Times New Roman;" >
+               <span style="color: orange; font-weight: bold;">☞</span> Learn The Tips And Tricks In Building Materials Supply
+            </p>
+        </div>
+         <div style="flex: 1;">
+            <img src="{% static 'shop/images/keep1.jpeg' %}" style="width: 100%; border-radius: 20px" alt="Image">
+        </div>
+    </div>
+</section1>
+
+
+	<!-- <div class="box-add-products">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="https://movieflix.pythonanywhere.com/">
+						    <img class="img-fluid" src="{% static 'shop/images/add-img-03.jpg' %}" alt="" />
+                        </a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a  href="#">
+						<img class="img-fluid" href="https://Fandf.pythonanywhere.com/" src="{% static 'shop/images/add-img-02.png' %}"  alt="" />
+                        </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+<style type="text/css">
+    #shopButton {
+  /* Add your desired styles here */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#shopButton:hover {
+  background-color: #0056b3;
+}
+
+#shopButton:focus {
+  outline: none;
+}
+
+</style>
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1 style="color: orange;">Building Materials Across All Categories</h1>
+                            <a id="shopButton" href="{% url 'shop' %}">SHOP</a>
+                        <p style="text-decoration:underline;">Our Mission: Enabling Exceptional Building Materials for All.</p>
+                        <p>Explore a myriad of high-quality construction materials and innovative ideas available at <b>Fandf</b>. What would you like to purchase today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            <button data-filter=".exclusive">Top featured</button>
+                            <button data-filter=".hot">Best seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row special-list">
+                {% for product in products %}
+                    {% if product.tag == "hot" or product.tag == "exclusive" %}
+                    
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg"style="max-width:90% !important; min-height:10% !important; margin: 0rem auto !important;">
+
+    <div class="modal-content" style="background: none;" >
+        <div class="preview-iframe" style="height:700px; width: auto;">
+          <strong style="margin-left: 10px; color: white;" > <span class="fas fa-eye" style='font-size:10px'> Template Preview </span></strong>
+              <button type="button btn-primary" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:9px; font-size: 14px; 
+              margin-top:4px ; color: white; "  onclick="templateClose()"  >
+  <span  aria-hidden="true">&times; Back</span>
+</button>
+            <iframe class="screen" width="100%" height="100%" style="background:white;" id="preview-iframe"  ></iframe>  
+         </div>
+    </div>
+  </div>
+</div>
+                    <div class="col-lg-4 col-md-6 special-grid {{product.tag}}"  > 
+                        <div class="products-single fix" >
+                            <div class="box-img-hover"  >
+                                <div class="type-lb">
+                                    <p class="sale" style="background-color: orange;">Sale</p>
+                                </div>
+                                <img src="{{ product.product_image2.url}}" class="img-fluid" alt="Image" >
+                                <div class="mask-icon"> 
+                                <!-- <img src="{{ product.product_image.url }}" class="img-fluid" alt="Image">
+                                <div class="mask-icon"> -->
+                                    <ul>
+                                        <li><a href="{% url 'preview' preview=product.pk %}" data-toggle="tooltip" 
+
+                                            data-placement="right" title="Full View"><i class="fas fa-eye"></i></a></li>
+
+                                        <!-- <li><a type="button" class="btn btn-light" data-toggle="modal" data-target=".bd-example-modal-lg" title="View" onclick="templateShow( '{{ product.product_image2.url}}' )"   ><i title="View" class="fas fa-eye"></i></a></li> -->
+                                        
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <button  data-product={{product.id}} data-action="add" class="btn-cart update-cart" >Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="why-text">
+                                <h4>{{product.name}}</h4>
+                                <h5>₦ {{product.price|floatformat:2}}</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>FandF Global Ventures Blog</h1>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'shop/images/store/cement-900.png' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>The Foundation: Choosing the Right Building Materials</h3>
+                                <p>In the world of construction, each material serves a distinct purpose, contributing to the strength, durability, and overall aesthetics of the project. a successful construction project relies on the right ingredients for its foundation structure's. visually appealing structure, the significance</p>
+                            </div>
+                            <!-- <ul class="option-blog">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#"><i class="far fa-comments"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'shop/images/f_global_logo-removebg-preview.png' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Enhancing Your Construction Project with Quality Building Materials</h3>
+                                <p>When it comes to creating a sturdy and visually appealing structure, the significance of high-quality building materials cannot be overstated. Just as a skilled artist carefully selects the finest brushes and pigments for a masterpiece, .</p>
+                            </div>
+                            <!-- <ul class="option-blog">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#"><i class="far fa-comments"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'shop/images/store/cement-900.png' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Building Strong Foundations with Fringilla</h3>
+                                <p>When it comes to constructing a solid foundation for your project in Nigeria, Fringilla stands as an essential building block. Much like the unity within Nigeria's diverse communities, Fringilla offers unmatched strength and versatility to ensure your structure's longevity.</p>
+                            </div>
+                            <!-- <ul class="option-blog">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#"><i class="far fa-comments"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+
+    /* ..............................................
+       Template Preview 
+       ................................................. */
+ var templateShow = function(data_target){ 
+        var preview = document.getElementById('preview-iframe'); 
+        preview.setAttribute("src",data_target) 
+    
+
+ }; var templateClose = function(){ 
+        var preview = document.getElementById('preview-iframe'); 
+        preview.setAttribute("src","") 
+    
+
+ };
+        
+
+    </script>
+    <!-- End Blog  -->
+<div class="chat-button" onclick="toggleChat()">
+   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#EBEEEF" d="M50 0c27.613 0 50 22.386 50 50s-22.387 50-50 50C22.386 100 0 77.614 0 50S22.386 0 50 0z"></path> <defs> <circle id="a" cx="50" cy="50" r="50"></circle> </defs> <clipPath id="b"> <use xlink:href="#a" overflow="visible"></use> </clipPath> <g clip-path="url(#b)"> <path fill="#F1C40E" d="M45 61h10c11.046 0 20 8.954 20 20v8c0 11.046-8.954 20.001-20 20.001H45c-11.046 0-20-8.955-20-20.001v-8c0-11.046 8.954-20 20-20z"></path> <path fill="#FFF55C" d="M49.865 79.994c-2.042 0-3.863 1.538-3.863 3.152 0 .685.51 1.19 1.24 1.19.847 0 1.152-.504 1.38-.985.244-.519.439-.963 1.335-.963.793 0 1.398.377 1.398 1.061 0 .588-.701.798-1.318 1.267-.72.546-1.535 1.166-1.535 2.226 0 .606.429 1.223 1.224 1.223.889 0 1.088-.49 1.25-.907.061-.157.116-.308.207-.438.125-.178.436-.396.764-.625.867-.608 2.057-1.441 2.057-2.938 0-2.409-2.231-3.263-4.139-3.263zm-.1 9.126c-.78 0-1.412.646-1.412 1.438 0 .797.632 1.439 1.412 1.439.78 0 1.411-.646 1.411-1.439s-.631-1.438-1.411-1.438zM51 53c7.732 0 14 4.479 14 10.001C65 68.521 58.732 73 51 73s-14-4.479-14-9.999C37 57.479 43.268 53 51 53z"></path> <path fill="#4D301A" d="M33 47.001h36A2 2 0 0 1 71 49v11a2 2 0 0 1-2 2H33a2 2 0 0 1-2-2V49a2 2 0 0 1 2-1.999z"></path> <path fill="#DF9274" d="M51 19c11.046 0 20 11.193 20 25 0 13.809-8.954 25-20 25S31 57.809 31 44c0-13.807 8.954-25 20-25z"></path> <path fill="#ffffff" d="M43.5 43a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"></path> <path fill="#3498DB" d="M43.5 45a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"></path> <path fill="#ffffff" d="M57.5 43a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"></path> <path fill="#3498DB" d="M57.5 45a1.5 1.5 0 1 1-.002 3.002A1.5 1.5 0 0 1 57.5 45z"></path> <path fill="#4D301A" d="M70.619 39.143C68.811 27.661 60.716 19 51 19c-10.006 0-18.296 9.186-19.768 21.179 1.559.524 11.375 3.339 23.859-5.729 2.589 2.925 7.729 7.181 15.528 4.693z"></path> <path fill="#C0392C" d="M70.027 37c-1.202.008-.996 3.358-.996 7.5 0 .835-.012 1.637-.02 2.388-1.045 1.618-3.777 5.537-7.025 7.566-2.707 1.692-6.332 2.837-8.23 3.364A3 3 0 1 0 51 62a2.995 2.995 0 0 0 2.891-2.236c1.27-.306 5.731-1.474 8.916-3.463 2.562-1.603 4.854-4.363 6.262-6.294.1 1.233.353 1.993.958 1.993C73.326 52 76 48.642 76 44.5s-2.674-7.522-5.973-7.5zM32 37c-3.313-.022-6 3.358-6 7.5s2.687 7.5 6 7.5c1.283 0 1-3.358 1-7.5s.207-7.492-1-7.5z"></path> </g> </g></svg>
+</div>
+
+<div class="chat-iframe-container" id="chatIframeContainer">
+  <div class="close-button" onclick="toggleChat()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M18.36 6.64a1.5 1.5 0 00-2.12 0L12 8.88 7.76 4.64a1.5 1.5 0 00-2.12 2.12L9.88 12l-4.24 4.24a1.5 1.5 0 002.12 2.12L12 13.12l4.24 4.24a1.5 1.5 0 002.12-2.12L14.12 12l4.24-4.24a1.5 1.5 0 000-2.12z"/>
+            </svg>
+        </div>
+   <iframe id="chatIframe" src="http://192.168.117.97:8030/customer/chatbot/iframe/FANDF2202408061?user_id=adroit" width="100%" height="100%" frameborder="0"></iframe>
+</div>
+
+<style>
+ .chat-button {
+            position: fixed;
+            bottom: 10px;
+            right: 0px;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100000;
+        }
+        .chat-button svg {
+            width: 57px;
+            height: 60px;
+            fill: #fff;
+        }
+        .chat-iframe-container {
+            z-index: 1000;
+            position: fixed;
+            bottom: 72px;
+            right: 5px;
+            width: 320px;
+            height: 420px;
+            display: none;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius:8px;
+        }
+        .chat-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+            .close-button {
+            position: absolute;
+            top: -10px;
+            right: -8px;
+            width: 25px;
+            height: 25px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .close-button svg {
+            width: 23px;
+            height: 14px;
+            fill: #fff;
+        }
+
+        iframe {
+          border-radius:8px;
+        }
+
+</style>
+        
+  <script>
+function toggleChat() {
+    const chatContainer = document.getElementById('chatIframeContainer');
+    if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+        chatContainer.style.display = 'block';
+    } else {
+        chatContainer.style.display = 'none';
+    }
+}
+</script>
+    {% endblock content %}

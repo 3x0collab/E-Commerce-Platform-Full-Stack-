@@ -1,0 +1,707 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+    </script>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Fandf global ventures Ltd</title>
+    <meta name="keywords" content="Python3, Django, Ecommerce, Gleomento, Ritvik Dayal, Ritvik">
+    <meta name="description" content="Ecommerce System developed using Django Framework">
+    <meta name="author" content="Ritvik Dayal">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'shop/images/f_global_logo-removebg-preview.png' %}" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/7246162cf2.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" href="{% static 'shop/images/images-removebg-preview.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'shop/css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'shop/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'shop/css/custom.css' %}">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.shop/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Java script -->
+    <style>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bay {
+  animation: fadeIn 2s ease-in-out;
+}
+
+/*.attr-navs {
+    top: 10px;
+}
+@media (max-width: 992px)
+.attr-navs {
+    position: absolute;
+    right: 60px;
+}
+
+/*.attr-navs {
+    float: right;
+    display: inline-block;
+    margin-left: 13px;
+    margin-right: -15px;
+}
+
+.attr-navs > ul > li > a span.badge {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 5px;
+    font-size: 10px;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    padding-top: 2px;
+}
+
+.attr-navs > ul > li > a {
+    color: black;
+}
+*/*/
+
+
+</style>
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+        
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }   
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+
+        function getCookie(name){
+            // getting all the cookies from
+            var cookieArr = document.cookie.split(";");
+
+            // looping through all cookies to find ours
+            for(var i=0; i < cookieArr.length; i++){
+                var cookiePair = cookieArr[i].split("=");
+
+                // removing starting whitepace and comparing names
+                if(name == cookiePair[0].trim()){
+                    // Decoding cookie value and return
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+
+            return null; //if cookie not found
+        }
+
+        var cart = JSON.parse(getCookie('cart'))
+
+        if (cart == undefined) {
+            cart = {}
+            console.log('Cart was created!')
+            document.cookie = 'cart='+ JSON.stringify(cart)+";domain=;path=/"
+        }
+
+        console.log('Cart: ',cart);
+
+    </script>
+<style type="text/css">
+        #loading-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .record-signal {
+            width: 80px;
+            height: 80px;
+            border: 6px solid #3498db; /* Blue color */
+            border-radius: 50%;
+            animation: recordAnimation 1s linear infinite;
+        }
+
+        .record-signal:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            background-color: orange; /* Red color */
+            border-radius: 50%;
+            animation: pulseAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes recordAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulseAnimation {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #loading-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0);
+            z-index: 9999;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        #page-content, #loading-overlay {
+            display: none;
+        }
+
+        #loading-overlay.active {
+            display: flex;
+        }
+
+        #page-content.active {
+            display: block;
+        }
+
+        #blank-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9998;
+        }
+    </style>
+    <style>
+    .circle-animation {
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+        border-radius: 50%;
+        position: relative;
+        animation: upDown 7s infinite;
+    }
+
+    @keyframes upDown {
+        0%, 100% {
+            top: 0;
+        }
+        50% {
+            top: 300px; /* Adjust this value to control the height of the animation */
+        }
+    }
+</style>
+
+    <style>
+    .circle-animation1 {
+        width: 15px;
+        height: 15px;
+        background-color: #083590;
+        border-radius: 50%;
+        position: absolute;
+        animation: upDown 7s infinite;
+    }
+
+    @keyframes upDown {
+        0%, 100% {
+            top: 0;
+        }
+        50% {
+            top: 300px; /* Adjust this value to control the height of the animation */
+        }
+    }
+</style>
+
+<style>
+.jj {
+  background-color: #083590; /* Background color (you can change this to your desired color) */
+  padding: 10px 20px; /* Add padding to the link */
+  border-radius: 20px; /* Add border radius to give rounded corners */
+  color: #ffffff; /* Text color */
+  font-size: 15px!important;
+  text-align: center;
+  display: inline-block; /* Make the link inline block to adjust width */
+  width: 120%; /* Set a specific width for the link (you can change this to your desired width) */
+   font-family: Times New Roman; font-size: 15px;"
+}
+.drup {
+  border-radius: 10%!important; 
+  background-color: #083590!important;
+}
+
+@media screen and (max-width: 993px) {
+  .drup {
+    border-radius: 0%!important; 
+    background-color: #083590!important;
+  }
+}
+
+.jj:hover {
+  background-color: transparent; /* Make the background transparent on hover */
+  border: 2px solid #083590; /* Add a white border on hover */
+  color: #083590!important;
+}
+.nav-link:hover {
+  background-color: transparent; /* Make the background transparent on hover */ /* Add a white border on hover */
+  color: #083590!important;
+}
+
+@media screen and (max-width: 993px) {
+  .jj {
+    display: none;
+  }
+}
+@media screen and (max-width: 993px) {
+  .top-search {
+    display: none;
+  }
+}
+@media screen and (max-width: 993px) {
+  .adriot {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+    <!-- Start Main Top -->
+    <div class="main-top" style="background: #5e5e08;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="custom-select-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="₦ NGN" style="background-color: red;">
+                            <option>₦ NGN</option>
+                            <option>$ USD</option>
+                            <option>€ EUR</option>
+						</select>
+                    </div>
+                    <div class="right-phone-box">
+                        <p>Call US :- <a href="tel:+2348153839345"> +234-8153-8393-45</a></p>
+                    </div>
+                    <div class="our-link">
+                        <ul>
+                            <li><a href="#" id="locationLink"><i class="fas fa-location-arrow"></i> Our location</a></li>
+                            <li><a href="{% url 'contact-us' %}"><i class="fas fa-headset"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="locationModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+           <div class="mapouter"><div class="gmap_canvas"><iframe width="511" height="316" id="gmap_canvas" src="https://maps.google.com/maps?q=33, agbebi street, ijesha road. Surulere&t=k&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2yu.co">2yu</a><br><style>.mapouter{position:relative;text-align:right;height:316px;width:511px;}</style><a href="https://embedgooglemap.2yu.co">html embed google map</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:316px;width:511px;}</style></div></div>
+        </div>
+    </div>
+<style type="text/css">
+   /* Style for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* Style for the modal content */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%;
+    overflow: auto;
+}
+
+/* Style for the close button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+</style>
+<script type="text/javascript">
+    // Get the modal element
+const modal = document.getElementById("locationModal");
+
+// Get the link that opens the modal
+const locationLink = document.getElementById("locationLink");
+
+// Get the close button element
+const closeBtn = document.getElementsByClassName("close")[0];
+
+// Open the modal when the link is clicked
+locationLink.onclick = function() {
+    modal.style.display = "block";
+};
+
+// Close the modal when the close button is clicked
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+};
+
+// Close the modal when the user clicks outside of it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+</script>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="login-box">
+                    {% if user.is_authenticated %}
+
+                    {% else %}
+						<a href="{% url 'login' %}" style="color:white!important; padding-right: 10px!important">Sign In </a>
+                        <a href="{% url 'signup' %}" style="color:white!important;">  Sign Up</a>
+                    {% endif %}
+					</div>
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: F and F
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Goods
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Building Materials
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Cements
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Statues
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: 
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav" style="height: 90px;">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'shop/images/f_global_logo-removebg-preview.png' %}" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu" style="background-color: #f9f9f9;
+    border-radius: 10px;">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">SHOP</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'checkout' %}">CHECKOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact-us' %}">CONTACT Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <!-- <li class="search"><a href="#"><i class="fa fa-search"></i></a></li> -->
+                        <li class="side-menu">
+							<a href="{% url 'cart' %}" id="cart-id" onclick="GoCart()" >
+								<i class="fa fa-shopping-bag"></i>
+								<span class="badge">{{cartItems}}</span>
+								<p>My Cart</p>
+							</a>
+						</li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+           
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+
+    {% block content %}
+    {% endblock content %}
+
+     <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Business Time</h3>
+                            <ul class="list-time">
+                                <li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Newsletter</h3>
+                            <p>It is not Working. Stop Trying!!</p>
+                            <form class="newsletter-box">
+                                <div class="form-group">
+                                    <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <button class="btn hvr-hover" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Social Media</h3>
+                            <p>Stay in touch with us through social media</p>
+                            <ul>
+                                <li><a href="https://facebook.com/FandF_global"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://instagram.com/@cement_dealer_"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://twitter.com/@cement_dealer_"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/Folashade Bankole-Osigwe"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/@cement_dealer"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About Us</h4>
+                            <p><b>Fandf Global Ventures Ltd</b><br><i></i>
+                            <br> is a reputable and registered distributor of cement and various building materials. With extensive experience in the industry, we have established partnerships with numerous construction companies and have aided aspiring entrepreneurs in venturing into the building materials business.</p>                             
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>FAQs</h4>
+                            <ul>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'shop' %}">Shop</a></li>
+                                <li><a href="https://facebook.com/FandF_global">Facebook</a></li>
+                                <li><a href="https://instagram.com/@cement_dealer_">Twitter</a></li>
+                                <li><a href="https://instagram.com/@cement_dealer_">Instagram</a></li>
+                                <li><a href="https://www.linkedin.com/in/Folashade Bankole-Osigwe">linkedin</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Lagos <br>33, agbebi street, ijesha road. Surulere. ,<br> Nigeria</p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+234-8153839345">+234-8153-8393-45
+</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto: fandfglobal1@gmail.com">fandfglobal1@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+        Web-Template by: <a href="#">3x0 Tech</a><br></a>
+        </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+<script src="{% static 'shop/js/cart.js' %}"></script>
+    <script src="{% static 'shop/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'shop/js/popper.min.js' %}"></script>
+    <script src="{% static 'shop/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'shop/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'shop/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'shop/js/inewsticker.js' %}"></script>
+    <script src="{% static 'shop/js/bootsnav.js' %}"></script>
+    <script src="{% static 'shop/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'shop/js/isotope.min.js' %}"></script>
+    <script src="{% static 'shop/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'shop/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'shop/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'shop/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'shop/js/custom.js' %}"></script>
+    <script src="{% static 'js/loading_animation.js' %}"></script>
+
+</body>
+
+</html>
+<script type="text/javascript">
+
+    function GoCart (e) {
+        // e.preventDefault()
+        console.log('greererr')
+location.href = document.getElementById('cart-id').getAttribute('href')
+
+
+    }
+    // loading_animation.js
+window.addEventListener("load", function () {
+    // Show the loading overlay
+    const loadingOverlay = document.getElementById("loading-overlay");
+    loadingOverlay.classList.add("active");
+
+    // Blank the page while loading
+    const blankOverlay = document.getElementById("blank-overlay");
+    blankOverlay.style.display = "block";
+
+    // Hide the loading overlay and show the page content after 2.5 seconds (you can adjust this value as needed)
+    setTimeout(function () {
+        loadingOverlay.classList.remove("active");
+        blankOverlay.style.display = "none";
+
+        // Show the page content after hiding the loading animation
+        const pageContent = document.getElementById("page-content");
+        pageContent.classList.add("active");
+    }, 2500); // 2500 milliseconds = 2.5 seconds (adjust this value as needed)
+});
+
+</script>

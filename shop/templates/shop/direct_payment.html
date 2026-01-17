@@ -1,0 +1,111 @@
+{% load static %}
+{% block content %}
+
+<style>
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 5%;
+    margin-left: 5%;
+    flex-direction: column;
+  }
+  .container4 {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+  p {
+    margin: 0 0 15px;
+    font-size: 16px;
+  }
+  .account-details {
+/*    margin-bottom: 20px;*/
+    font-size: 16px;
+/*    line-height: 1.4;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 20px;
+  }
+  .button {
+    margin-top: 10px; /* Add some space between buttons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+  }
+  .send-email {
+    background-color: #007bff;
+  }
+  .send-whatsapp {
+    background-color: #25d366;
+  }
+  .icon {
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .button-container {
+      align-items: center; /* Center vertically */
+      margin-top: 10px;
+    }
+  }
+</style>
+  <section>
+    <div class="alert alert-success mb-2" role="alert">
+
+  <h4 class="alert-heading font-weight-bold ">Your order has been successfully processed!</h4>
+  <hr />
+  <p>Please complete the transaction using the details provided below. Once done, click the button below to send the receipt via email or WhatsApp, to confirm the order.</p>
+
+</div>
+
+
+
+    <div class="container4">
+      <h1>Bank Transfer</h1>
+      <hr>
+      <p style="display: flex; justify-content: center; align-items: center;">Direct transfer to Access Bank</p>
+      <p style="display: flex; justify-content: center; align-items: center;">BANK:<span style="font-weight: bold;"> Access Bank</span></p>
+      <p style="display: flex; justify-content: center; align-items: center;">ACCOUNT NAME:<span style="font-weight: bold;">. F AND F GLOBAL VENTURES LIMITED</span></p>
+        <p  style="display: flex; justify-content: center; align-items: center;">ACCOUNT NUMBER: <span style="font-weight: bold;">1781267493</span></p>
+      <div class="account-details">
+        
+      </div>
+      <div class="button-container">
+        <a href="{{email_message}}"  style="width:100%">
+ 
+        <button class="button send-email"><i class="fas fa-envelope icon"></i> Send Receipt via Email</button>
+              </a>
+        <a href="{{whatsapp_msg}}" target="_blank" style="width:100%" >
+        <button class="button send-whatsapp"><i class="fab fa-whatsapp icon"></i> Send Receipt via WhatsApp</button>
+      </a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+{% endblock content %}
