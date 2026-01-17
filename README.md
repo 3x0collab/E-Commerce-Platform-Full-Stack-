@@ -1,42 +1,42 @@
-# 3x0
+# 🛒 Django E-Commerce Platform
 
-<p style="text-align:center; font-size:16px;">
-<b>A Django Ecommerce web app to sell stone products.</b>
-</p>
+<div align="center">
+  <img src="Image_of_Prince_ismail_adedapo.jpeg" alt="Prince Ismail Adedapo" width="200" style="border-radius: 50%;" />
+  <br />
+  <h3><b>Author: Prince Ismail Adedapo</b></h3>
+  <p>Software Developer | Python & Django Specialist</p>
+</div>
 
-<img src="screenshots/home.png">
-
->3x0 template comes with the following funtionalities:-
-- Add Products with details such as image, name, price tags etc.
-
-- A visitor can shop without creating an account but will need one to checkout.
-
-- The shop currently support singler seller.
-
-- Paypal Integration.
-
-- Password Reset Functionality.
-
-- Customer Registration.
-
-> Used Cookies for Anonymous user interaction functionality.
-
-Credits:- 
-Images used are copyright freee, royalty free images from pexels.com and manyt other sources. The theme used was developed by TheWayShop.
-
-## Enjoy Some ScreenShots
 ---
 
-![](screenshots/home-1.png)
+### 📖 Overview
+A robust, scalable e-commerce web application built with **Python and Django**. This project handles the full product lifecycle, from inventory management to customer checkout, utilizing Django's powerful ORM and security features.
 
+**Status:** ✅ Open Source
 
-![](screenshots/shop.png)
+### 🛠️ Tech Stack
+* **Backend:** Python 3.x, Django Framework
+* **Database:** SQLite (Default) / PostgreSQL (Recommended)
+* **Frontend:** HTML5, CSS3, JavaScript
+* **Payments:** Stripe / Paystack Integration
 
+### 🚀 Getting Started
 
-![](screenshots/cart.png)
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/yourusername/ecommerce-django.git](https://github.com/yourusername/ecommerce-django.git)
+Install Dependencies
 
+```Bash
 
-![](screenshots/side-cart.png)
+pip install -r requirements.txt
+Run Migrations
 
+```Bash
 
-![](screenshots/checkout.png)
+python manage.py migrate
+Run the Server
+
+```Bash
+
+python manage.py runserver
